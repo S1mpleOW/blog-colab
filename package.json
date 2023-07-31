@@ -1,0 +1,33 @@
+{
+	"name": "blog-colab",
+	"version": "1.0.0",
+	"main": "index.ts",
+	"license": "MIT",
+	"description": "Blog platform",
+	"workspaces": [
+		"client",
+		"server",
+		"shared"
+	],
+	"keywords": [
+		"ts",
+		"nextjs",
+		"nestjs"
+	],
+	"author": "S1MPLEOW - JINUN20TH",
+	"scripts": {
+		"docker:compose": "docker-compose --env-file ./server/.env.dev up -d",
+		"client:dev": "yarn workspace client dev",
+		"server:dev": "yarn workspace server start:dev",
+		"start": "concurrently 'yarn:docker:compose' 'yarn:server:dev' 'yarn:client:dev'",
+		"stop": "docker-compose --env-file ./server/.env.dev down",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"devDependencies": {
+		"@types/webpack": "^5.28.0",
+		"concurrently": "^7.0.0",
+		"prettier": "^2.5.1",
+		"wait-on": "^6.0.1"
+	},
+	"private": true
+}
